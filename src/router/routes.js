@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from './../views/Home.vue'
 import Jobs from './../views/Jobs.vue'
 import Job from './../views/Job.vue'
+import Applicants from '../views/Applicants.vue'
 
 Vue.use(VueRouter)
 
@@ -23,7 +24,12 @@ export default new VueRouter({
         path: '/jobs/:id',
         name: 'job',
         component: Job
-    }   
+    },
+    {
+        path: '/applicants',
+        name: 'applicants',
+        component: Applicants
+    }    
 ]
     
 })

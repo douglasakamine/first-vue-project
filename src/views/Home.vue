@@ -1,9 +1,10 @@
 <template>
     <div class="home">
         <h2>Add new Job here</h2>
-        <button @click="toggleForm">New Job</button>
+        <button @click="toggleForm" id="button">New Job</button>
+        <button @click="toggleApply" id="button">New Applicant</button>
     
-
+      <!-- form for jobs bellow -->
         <b-form @submit.prevent="Submit" v-if="showForm"><b-form-group
         id="input-group-1"
         label="Job Title:"
@@ -56,6 +57,61 @@
 
       <b-button type="submit">Add Job</b-button>
     </b-form>
+
+    <!-- form for applicants bellow -->
+
+    <b-form @submit.prevent="SubmitApplicant" v-if="showApply"><b-form-group
+        id="input-group-6"
+        label="Applicant Name:"
+        label-for="input-6"
+      >
+        <b-form-input
+          id="input-6"
+          v-model="formDataApplicant.name"
+          type="text"
+          required
+          placeholder="Applicant Name"
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group id="input-group-7" label="Age:" label-for="input-7">
+        <b-form-input
+          id="input-7"
+          v-model="formDataApplicant.age"
+          required
+          placeholder="Enter the applicant age"
+        ></b-form-input>
+      </b-form-group>
+
+        <b-form-group id="input-group-8" label="Email:" label-for="input-8">
+        <b-form-input
+          id="input-8"
+          v-model="formDataApplicant.email"
+          required
+          placeholder="Enter the applicant email"
+        ></b-form-input>
+      </b-form-group>
+
+             <b-form-group id="input-group-9" label="Education:" label-for="input-9">
+        <b-form-input
+          id="input-9"
+          v-model="formDataApplicant.education"
+          required
+          placeholder="Enter applicant's education"
+        ></b-form-input>
+        </b-form-group>
+
+             <b-form-group id="input-group-10" label="Skill:" label-for="input-10">
+        <b-form-input
+          id="input-10"
+          v-model="formDataApplicant.skills"
+          required
+          placeholder="Applicant's Skills"
+        ></b-form-input>
+      </b-form-group>
+
+      <b-button type="submit">Add Applicant</b-button>
+    </b-form>
  </div>
 </template>
 
@@ -67,21 +123,33 @@ export default {
     data() {
         return {
         showForm: false,
+        showApply: false,
             formData: {
                 title: '',
                 company: '',
                 salary: 0,
                 location: '',
                 requirements: ''
+             },
+             formDataApplicant: {
+                name: '',
+                age: '',
+                email: '',
+                education: '',
+                skills: ''
              }
          }
     },
     methods: {
         ...mapActions([
-            'addJob'
+            'addJob',
+            'addApplicant'
         ]),
         toggleForm() {
             this.showForm = !this.showForm
+        },
+        toggleApply() {
+          this.showApply = !this.showApply
         },
          Submit(){
             const { title, company, salary, location, requirements} = this.formData
@@ -99,7 +167,24 @@ export default {
                 location: '',
                 requirements: ''
             }
+        }, SubmitApplicant() {
+
+           const { name, age, email, education, skills} = this.formDataApplicant
+
+            console.log(this.formDataApplicant);
+            
+            const values = { name, age, email, education, skills}
+
+            this.addApplicant(values)
+
+            this.formDataApplicant = {
+              name: '',
+                age: '',
+                email: '',
+                education: '',
+                skills: ''
             }
+        }
     }
 }
 </script>

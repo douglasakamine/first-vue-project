@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <div class="center"><h1>Spotted Recruit - Jobs Manager</h1></div>
+    <header class="center"><img src="./assets/image.jpeg" alt="spotted-recruit" 
+    class="img align-top" id="logo"></header>
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/jobs">Jobs</router-link>
+      <router-link to="/jobs">Jobs</router-link> |
+      <router-link to="/applicants">Applicants</router-link>
     </div>
     <b-container>
     <router-view></router-view>
@@ -15,10 +17,7 @@
 
 
 export default {
-  name: 'App',
-  components: {
-
-  }
+  name: 'App'
 }
 </script>
 
@@ -31,4 +30,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+#logo {
+  width: 250px;
+}
+#button {
+  margin: 10px;
+}
+
 </style>

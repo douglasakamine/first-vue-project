@@ -27,7 +27,6 @@ export default {
      ])
     },
     mounted() {
-
         const uniqueJob = this.jobs[this.$route.params.id]
         this.uniqueJob = uniqueJob
     }
