@@ -1,6 +1,5 @@
 <template>
     <div class="home">
-        <h2>Add new Job here</h2>
         <button @click="toggleForm" id="button">New Job</button>
         <button @click="toggleApply" id="button">New Applicant</button>
     
@@ -147,9 +146,12 @@ export default {
         ]),
         toggleForm() {
             this.showForm = !this.showForm
+            if(this.showApply == true) { this.showApply = false}  else { this.showApply }
+
         },
         toggleApply() {
           this.showApply = !this.showApply
+        if(this.showForm == true) { this.showForm = false } else { this.showForm }
         },
          Submit(){
             const { title, company, salary, location, requirements} = this.formData
