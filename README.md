@@ -1,4 +1,4 @@
-# spotted
+# Vue Project Douglas Akamine
 
 ## Project setup
 ```
